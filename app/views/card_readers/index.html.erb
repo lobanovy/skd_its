@@ -13,7 +13,7 @@
     <tr>
       <td><%= card_reader.address %></td>
       <td><%= card_reader.name %></td>
-      <td><%= card_reader.card_reader_group_id %></td>
+      <td><%= CardReaderGroup.find_by(id: card_reader.card_reader_group_id).name %></td>
       <td><%= link_to 'Show', card_reader_path(card_reader) %></td>
     </tr>
   <% end %>
