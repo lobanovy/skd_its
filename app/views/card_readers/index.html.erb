@@ -6,14 +6,12 @@
   <tr>
     <th>Address</th>
     <th>Name</th>
-    <th>Card_Reader_Group</th>
   </tr>
  
   <% @card_readers.each do |card_reader| %>
     <tr>
       <td><%= card_reader.address %></td>
       <td><%= card_reader.name %></td>
-      <td><%= card_reader.card_reader_group.name %></td>
       <td><%= link_to 'Show', card_reader_path(card_reader) %></td>
     </tr>
   <% end %>

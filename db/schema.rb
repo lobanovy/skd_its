@@ -14,25 +14,21 @@
 ActiveRecord::Schema.define(version: 20170910102148) do
 
   create_table "card_groups", force: true do |t|
-    t.string   "name",         limit: 32, null: false
-    t.text     "ip_addresses",            null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer "card_reader_id"
+    t.integer "card_reader_group_id"
   end
 
+  add_index "card_groups", ["card_reader_group_id"], name: "index_card_groups_on_card_reader_group_id", using: :btree
+  add_index "card_groups", ["card_reader_id"], name: "index_card_groups_on_card_reader_id", using: :btree
+
   create_table "card_reader_groups", force: true do |t|
-    t.string   "name",       limit: 32, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string "name", limit: 32, null: false
   end
 
   create_table "card_readers", force: true do |t|
-    t.string   "address",              limit: 15,             null: false
-    t.string   "name",                 limit: 24,             null: false
-    t.integer  "failure_count",        limit: 1,  default: 0,              unsigned: true
-    t.integer  "card_reader_group_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string  "address",       limit: 15,             null: false
+    t.string  "name",          limit: 24,             null: false
+    t.integer "failure_count", limit: 1,  default: 0,              unsigned: true
   end
 
   create_table "cards", force: true do |t|

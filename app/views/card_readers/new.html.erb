@@ -5,8 +5,6 @@
     <%= f.text_field :address, size: "17x12" %>
     <%= f.label :name %>
     <%= f.text_field :name, size: "26x12" %>
-    <%= f.label :Group %>
-    <%= f.collection_select(:card_reader_group_id, CardReaderGroup.all, :id, :name) %>
   </p>
    
   <p>

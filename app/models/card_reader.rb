@@ -1,3 +1,4 @@
 class CardReader < ActiveRecord::Base
-  belongs_to :card_reader_group
+  has_many :card_groups
+  has_many :card_reader_groups, through: :card_groups
 end

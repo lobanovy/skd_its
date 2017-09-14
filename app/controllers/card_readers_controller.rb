@@ -28,6 +28,6 @@ class CardReadersController < ApplicationController
 
   private
   def card_reader_params
-      params.require(:card_reader).permit(:address, :name, :card_reader_group_id)
+      params.require(:card_reader).permit(:address, :name)
    end
 end

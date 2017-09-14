@@ -1,10 +1,9 @@
 class CreateCardGroups < ActiveRecord::Migration
   def change
     create_table :card_groups do |t|
-      t.string :name, limit: 32, null: false
-      t.text :ip_addresses, null: false
-
-      t.timestamps
+      t.belongs_to :card_reader, index: true
+      t.belongs_to :card_reader_group, index: true	
+                  
     end
   end
 end
