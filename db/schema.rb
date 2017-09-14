@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(version: 20170910102148) do
   create_table "card_readers", force: true do |t|
     t.string   "address",              limit: 15,             null: false
     t.string   "name",                 limit: 24,             null: false
-    t.integer  "card_reader_group_id", limit: 1,              null: false, unsigned: true
     t.integer  "failure_count",        limit: 1,  default: 0,              unsigned: true
+    t.integer  "card_reader_group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

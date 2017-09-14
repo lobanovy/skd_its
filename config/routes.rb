@@ -2,7 +2,9 @@ SkdIts::Application.routes.draw do
   get "welcome/index"
 
   resources :card_groups
-  resources :card_reader_groups
+  resources :card_reader_groups do
+    resources :card_readers
+  end
   resources :card_readers
 
   root 'welcome#index'

@@ -1,6 +1,10 @@
 class CardReaderGroupsController < ApplicationController
 def index
   @card_reader_groups = CardReaderGroup.all
+  respond_to do |format|
+    format.html # index.html.erb
+    format.json { render json: @card_reader_groups }
+    end
   end
   def show
   @card_reader_group = CardReaderGroup.find(params[:id])
@@ -15,6 +19,11 @@ def index
     else
      render 'new'
     end
+  end
+  def destroy
+    @card_reader_group = CardReaderGroup.find(params[:id])
+    @card_reader_group.destroy
+    redirect_to card_reader_groups_path
   end
 
   private
