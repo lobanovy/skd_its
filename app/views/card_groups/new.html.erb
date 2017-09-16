@@ -1,9 +1,10 @@
 <h1>Hello New Card Group</h1>
 <%= form_for @card_group do |f| %>
   <p>
-    <%= f.label :Group_name %><br>
-    <%= f.text_field :name, size: "34x12" %>
-    <%= f.collection_select(:id, CardReaderGroup.all, :id, :name) %>
+    <%= f.label :Reader %>
+    <%= f.collection_select(:card_reader_id, CardReader.all, :id, :name) %>
+    <%= f.label :Group_name %>
+    <%= f.collection_select(:card_reader_group_id, CardReaderGroup.all, :id, :name) %>
   </p>
    
   <p>
