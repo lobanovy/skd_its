@@ -14,7 +14,14 @@ class CardReadersController < ApplicationController
  end
   def create
     @card_reader = CardReader.new(card_reader_params)
-    if @card_reader.save
+    @card_reader_group = CardReaderGroup.new
+    @card_reader_group.name = @card_reader.name
+    
+    if (@card_reader.save & @card_reader_group.save)
+     @card_group = CardGroup.new
+     @card_group.card_reader_id = CardReader.find_by(name: @card_reader.name).id
+     @card_group.card_reader_group_id = CardReaderGroup.find_by(name: @card_reader.name).id
+     @card_group.save
      redirect_to @card_reader
     else
      render 'new'
@@ -30,4 +37,5 @@ class CardReadersController < ApplicationController
   def card_reader_params
       params.require(:card_reader).permit(:address, :name)
    end
+    
 end
