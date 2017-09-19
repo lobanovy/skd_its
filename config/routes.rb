@@ -6,6 +6,7 @@ SkdIts::Application.routes.draw do
     resources :card_readers
   end
   resources :card_readers
+  resources :cards
 
   root 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.

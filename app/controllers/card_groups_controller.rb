@@ -1,9 +1,9 @@
 class CardGroupsController < ApplicationController
   def index
   	@card_groups = CardGroup.all
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @card_groups }
+  	respond_to do |format|
+    	   format.html # index.html.erb
+           format.json { render json: @card_groups }
     end
   end
   def show

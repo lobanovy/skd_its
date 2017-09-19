@@ -32,14 +32,16 @@ ActiveRecord::Schema.define(version: 20170910102148) do
   end
 
   create_table "cards", force: true do |t|
-    t.integer  "card_id",                                 null: false, unsigned: true
-    t.integer  "time_end",                                null: false, unsigned: true
-    t.integer  "zone",          limit: 1,  default: 0,                 unsigned: true
-    t.string   "user_name",     limit: 32,                null: false
-    t.integer  "card_group_id", limit: 1,                 null: false, unsigned: true
-    t.boolean  "enable",                   default: true, null: false
+    t.integer  "card_reader_group_id"
+    t.integer  "card_id",                                        null: false, unsigned: true
+    t.integer  "time_end",                                       null: false, unsigned: true
+    t.integer  "zone",                 limit: 1,  default: 0,                 unsigned: true
+    t.string   "user_name",            limit: 32,                null: false
+    t.boolean  "enable",                          default: true, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "cards", ["card_reader_group_id"], name: "index_cards_on_card_reader_group_id", using: :btree
 
 end
