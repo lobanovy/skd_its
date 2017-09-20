@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170910102148) do
+ActiveRecord::Schema.define(version: 20170920123400) do
 
   create_table "card_groups", force: true do |t|
     t.integer "card_reader_id"
@@ -43,5 +43,12 @@ ActiveRecord::Schema.define(version: 20170910102148) do
   end
 
   add_index "cards", ["card_reader_group_id"], name: "index_cards_on_card_reader_group_id", using: :btree
+
+  create_table "events", force: true do |t|
+    t.string  "address",  limit: 15, null: false
+    t.integer "time",                null: false, unsigned: true
+    t.integer "card_id",             null: false, unsigned: true
+    t.integer "time_end",            null: false, unsigned: true
+  end
 
 end

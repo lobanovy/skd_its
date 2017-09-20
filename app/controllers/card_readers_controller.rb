@@ -7,8 +7,13 @@ class CardReadersController < ApplicationController
     end
    end	
   def show
-     @card_reader = CardReader.find(params[:id])
-   end
+    @card_reader = CardReader.find(params[:id])
+    @events = (%x"curl -s #{@card_reader.address} |tr ':' ' '|tr '\n' ' '").split(' ')
+     respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @card_reader}
+     end
+  end
   def new
   	@card_reader = CardReader.new
  end
